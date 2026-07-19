@@ -45,6 +45,7 @@ class ExampleTest extends TestCase
         $response
             ->assertOk()
             ->assertSee('Build Your Order')
+            ->assertSee('<script src="/js/order.js" defer></script>', escape: false)
             ->assertSee(route('home'), escape: false);
     }
 

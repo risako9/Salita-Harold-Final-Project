@@ -412,5 +412,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/order.js') }}" defer></script>
+    <script src="/js/order.js" defer></script>
 @endpush

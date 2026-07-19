@@ -170,6 +170,38 @@ const orderPrototypeVisuals = [
             ].join('\n');
         }
 
+        function copyOrderMessage(message) {
+            function copyWithTextarea() {
+                const textarea = document.createElement('textarea');
+                textarea.value = message;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(message).catch(copyWithTextarea);
+                return;
+            }
+
+            copyWithTextarea();
+        }
+
+        function openMessenger(checkoutUrl) {
+            const messengerWindow = window.open(checkoutUrl, '_blank');
+
+            if (messengerWindow) {
+                messengerWindow.opener = null;
+                return;
+            }
+
+            window.location.assign(checkoutUrl);
+        }
+
         itemChecks.forEach(function(check) {
             const qtyInput = check.closest('.menu-item').querySelector('.item-qty');
 
@@ -215,12 +247,10 @@ const orderPrototypeVisuals = [
             messagePreview.style.display = 'block';
             messagePreview.textContent = message;
 
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(message);
-            }
+            copyOrderMessage(message);
 
             alert(paymentNotice);
-            window.location.href = checkoutUrl;
+            openMessenger(checkoutUrl);
         });
 
         updateSummary();
