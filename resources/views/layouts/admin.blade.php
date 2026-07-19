@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>{{ $title }} | Abuela Cantina Admin</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/logo-round.png') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    @stack('styles')
 </head>
 <body>
     <header class="admin-header">

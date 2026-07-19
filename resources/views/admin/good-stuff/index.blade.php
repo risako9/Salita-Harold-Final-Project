@@ -1,5 +1,9 @@
 @extends('layouts.admin', ['title' => 'Good Stuff Pictures'])
 
+@push('styles')
+    <link rel="stylesheet" href="/css/admin.css">
+@endpush
+
 @section('content')
     <div class="admin-heading">
         <div>

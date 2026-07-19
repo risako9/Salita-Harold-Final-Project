@@ -1,5 +1,9 @@
 @extends('layouts.admin', ['title' => 'Log in'])
 
+@push('styles')
+    <link rel="stylesheet" href="/css/admin.css">
+@endpush
+
 @section('content')
     <section class="login-card">
         <p class="eyebrow">Private area</p>

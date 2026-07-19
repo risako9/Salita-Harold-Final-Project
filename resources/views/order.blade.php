@@ -5,7 +5,7 @@
 ])
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/order.css') }}">
+    <link rel="stylesheet" href="/css/order.css">
 @endpush
 
 @section('content')
