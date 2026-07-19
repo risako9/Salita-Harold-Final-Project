@@ -54,15 +54,15 @@
             </div>
             <div class="food-grid">
                 <article class="food-card">
-                    <div class="food-visual"><img src="{{ $goodStuff['birria-favorites']->image_url }}" alt="Quesa beef birria tacos with consommé" loading="lazy"></div>
+                    <div class="food-visual"><img src="{{ $goodStuff->get('birria-favorites')?->image_url ?? asset('assets/Food/1.jpg') }}" alt="Quesa beef birria tacos with consommé" loading="lazy"></div>
                     <div class="food-info"><div><h3>Birria favorites</h3><p>Slow-cooked, rich and deeply comforting.</p></div><span class="price">From ₱150</span></div>
                 </article>
                 <article class="food-card">
-                    <div class="food-visual"><img src="{{ $goodStuff['loaded-classics']->image_url }}" alt="Loaded beef nachos" loading="lazy"></div>
+                    <div class="food-visual"><img src="{{ $goodStuff->get('loaded-classics')?->image_url ?? asset('assets/Food/item-400000005201719302_1687995743.jpg') }}" alt="Loaded beef nachos" loading="lazy"></div>
                     <div class="food-info"><div><h3>Loaded classics</h3><p>Tacos, burritos and nachos with the works.</p></div><span class="price">From ₱150</span></div>
                 </article>
                 <article class="food-card">
-                    <div class="food-visual"><img src="{{ $goodStuff['rice-meals']->image_url }}" alt="Mexican rice meal with chicken and cheese sauce" loading="lazy"></div>
+                    <div class="food-visual"><img src="{{ $goodStuff->get('rice-meals')?->image_url ?? asset('assets/Food/2.jpg') }}" alt="Mexican rice meal with chicken and cheese sauce" loading="lazy"></div>
                     <div class="food-info"><div><h3>Rice meals</h3><p>Big, satisfying bowls made for any craving.</p></div><span class="price">From ₱150</span></div>
                 </article>
             </div>

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\HomepageFeature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,6 +25,17 @@ class ExampleTest extends TestCase
             ->assertOk()
             ->assertSee('Big flavor.')
             ->assertSee(route('order'), escape: false);
+    }
+
+    public function test_homepage_uses_fallback_images_when_feature_records_are_missing(): void
+    {
+        HomepageFeature::query()->delete();
+
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertSee(asset('assets/Food/1.jpg'), escape: false)
+            ->assertSee(asset('assets/Food/item-400000005201719302_1687995743.jpg'), escape: false)
+            ->assertSee(asset('assets/Food/2.jpg'), escape: false);
     }
 
     public function test_order_page_renders_with_named_home_route(): void
