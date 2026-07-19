@@ -8,8 +8,8 @@
 @else
 <header class="site-header" id="top">
         <nav class="nav" aria-label="Main navigation">
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">
-                <span></span><span></span><span></span><span class="sr-only">Open menu</span>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
             </button>
             <div class="nav-links" id="main-menu">
                 <a href="{{ route('home') }}#menu">Menu</a>

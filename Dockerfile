@@ -14,6 +14,9 @@ RUN npm run build
 
 FROM serversideup/php:8.3-fpm-nginx
 
+ENV PHP_UPLOAD_MAX_FILE_SIZE=6M \
+    PHP_POST_MAX_SIZE=8M
+
 USER root
 
 RUN install-php-extensions pdo_pgsql
@@ -35,7 +38,8 @@ RUN mkdir -p storage/framework/cache \
     storage/logs \
     bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+    && chmod -R 775 storage bootstrap/cache \
+    && php artisan storage:link
 
 USER www-data
 

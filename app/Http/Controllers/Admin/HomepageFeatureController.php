@@ -22,6 +22,8 @@ class HomepageFeatureController extends Controller
     {
         $validated = $request->validate([
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+        ], [
+            'image.uploaded' => 'The picture could not be uploaded. Please choose a JPG, PNG, or WebP file smaller than 5 MB.',
         ]);
 
         $oldImage = $feature->image_path;
