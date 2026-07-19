@@ -1,3 +1,17 @@
+FROM node:22-alpine AS vite-builder
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm ci
+
+COPY vite.config.js ./
+COPY resources ./resources
+COPY public ./public
+
+RUN npm run build
+
 FROM serversideup/php:8.3-fpm-nginx
 
 USER root
@@ -7,6 +21,8 @@ RUN install-php-extensions pdo_pgsql
 WORKDIR /var/www/html
 
 COPY --chown=www-data:www-data . .
+
+COPY --from=vite-builder --chown=www-data:www-data /app/public/build ./public/build
 
 RUN composer install \
     --no-dev \
