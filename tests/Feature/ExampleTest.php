@@ -26,7 +26,7 @@ class ExampleTest extends TestCase
             ->assertSee('Big flavor.')
             ->assertSee('class="menu-toggle"', escape: false)
             ->assertSee('aria-controls="main-menu"', escape: false)
-            ->assertSee('/js/home.js?v='.filemtime(public_path('js/home.js')), escape: false)
+            ->assertSee('<script src="/js/home.js?v='.filemtime(public_path('js/home.js')).'" defer></script>', escape: false)
             ->assertSee(route('order'), escape: false);
     }
 
